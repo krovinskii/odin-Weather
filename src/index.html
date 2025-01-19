@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather? Weather.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="appContainer">
@@ -22,29 +28,114 @@
       </div>
       <div class="appBody">
         <div class="weatherGrid">
-          <div class="mainWeatherCard"></div>
-          <div class="humidity"></div>
-          <div class="wind"></div>
-          <div class="precipiation"></div>
-          <div class="feelsLike"></div>
-          <div class="visibility"></div>
-          <div class="pressure"></div>
+          <div class="mainWeatherCard card">
+            <div class="mainCardLeft">
+              <div class="cityState">Austin, TX</div>
+              <div class="country">United States</div>
+              <div class="cardTemp">98°</div>
+            </div>
+            <div class="mainCardRight">
+              <img src="icons/sunny.svg" />
+              <div class="dayTime">Sunday 11:00AM</div>
+              <div class="skyCondition">Sunny</div>
+            </div>
+          </div>
+          <div class="humidity smallCard card">
+            <img />
+            <div class="smallCardDescription">Humidity</div>
+            <div class="smallCardBold">55%</div>
+          </div>
 
-          <div class="weatherGraph"></div>
+          <div class="wind smallCard card">
+            <img />
+            <div class="smallCardDescription">Wind</div>
+            <div class="smallCardBold">1 mph</div>
+          </div>
+          <div class="precipiation smallCard card">
+            <img />
+            <div class="smallCardDescription">Precipitation</div>
+            <div class="smallCardBold">0%</div>
+          </div>
+          <div class="feelsLike smallCard card">
+            <img />
+            <div class="smallCardDescription">Feels Like</div>
+            <div class="smallCardBold">96°</div>
+          </div>
+          <div class="visibility smallCard card">
+            <img />
+            <div class="smallCardDescription">Visibility</div>
+            <div class="smallCardBold">10 mi</div>
+          </div>
+          <div class="pressure smallCard card">
+            <img />
+            <div class="smallCardDescription">Pressure</div>
+            <div class="smallCardBold">1011 hPa</div>
+          </div>
 
-          <div class="sunday"></div>
-          <div class="monday"></div>
-          <div class="tuesday"></div>
-          <div class="wednesday"></div>
-          <div class="thursday"></div>
-          <div class="friday"></div>
-          <div class="saturday"></div>
+          <div class="weatherGraph card">placeholder</div>
+
+          <div class="sunday day card">
+            <div class="whatDay">Sunday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
+          <div class="monday day card">
+            <div class="whatDay">Monday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
+          <div class="tuesday day card">
+            <div class="whatDay">Tuesday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
+          <div class="wednesday day card">
+            <div class="whatDay">Wednesday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
+          <div class="thursday day card">
+            <div class="whatDay">Thursday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
+          <div class="friday day card">
+            <div class="whatDay">Friday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
+          <div class="saturday day card">
+            <div class="whatDay">Saturday</div>
+            <img />
+            <div class="highLow">
+              <h4>20°</h4>
+              50°
+            </div>
+          </div>
         </div>
       </div>
       <div class="appFooter">
         Created by Krivonski
         <a href="https://github.com/krovinskii"
-          ><!--<img src="icons/github.svg"-->
+          ><img class="footerImg" src="icons/github.svg" />
         </a>
       </div>
     </div>
