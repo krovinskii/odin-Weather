@@ -178,6 +178,7 @@
   transform: scale(1.03);
   transition: 0.05s;
   background-color: rgb(146, 171, 255);
+  cursor: pointer;
 }
 .day:active {
   transform: scale(1.1);
