@@ -70,6 +70,7 @@
 
 .appBody {
   height: 60vh;
+  min-height: 800px;
   width: 100vw;
   display: flex;
   align-items: center;
