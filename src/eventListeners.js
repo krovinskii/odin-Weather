@@ -1,4 +1,6 @@
 import { userSearch } from "./userSearch";
+import { elements } from "./elements";
+import { weatherUI } from "./weatherUI";
 
 export const eventListeners = () => {
   const setupEventListeners = () => {
@@ -16,18 +18,17 @@ export const eventListeners = () => {
 
         try {
           const search = userSearch();
-          const { weatherData, address } = await search.getLocationData();
+          const { weatherData, addressSeperated } =
+            await search.getLocationData();
 
           console.log("Weather data:", weatherData);
-          console.log("Address:", address);
+          console.log("Address:", addressSeperated);
+          //send data to dom here with a function that takes weatherdata, address etc as a parameter
+          weatherUI.update(weatherData, addressSeperated, elements());
         } catch (error) {
           console.error("Error processing weather request:", error);
         }
       }
-    });
-
-    inputElement.addEventListener("input", (event) => {
-      console.log("Input value changed:", event.target.value);
     });
   };
 

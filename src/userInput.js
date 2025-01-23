@@ -5,7 +5,6 @@ export const userInput = () => {
       console.error("Input element not found");
       return "";
     }
-    console.log("Getting input value:", inputElement.value);
     return inputElement.value.trim();
   };
 
