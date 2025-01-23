@@ -5,8 +5,9 @@ export const apiData = (location) => {
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=69H48HQ5FGM2LD927N29XU465`
     );
     let weatherDataJson = await weatherData.json();
-    const { currentConditions, description, resolvedAddress } = weatherDataJson;
-    return { weatherDataJson, currentConditions, resolvedAddress }; //return all data, current data, and address for the search
+    const { currentConditions, description, resolvedAddress, days } =
+      weatherDataJson;
+    return { weatherDataJson, currentConditions, resolvedAddress, days }; //return all data, current data, and address for the search
   };
   const currentConditions = async () => {
     try {
@@ -19,6 +20,7 @@ export const apiData = (location) => {
         humidity,
         pressure,
         precip,
+        precipprob,
       } = currentConditions;
       return {
         conditions, //overcast / sunny, whatever
@@ -28,6 +30,7 @@ export const apiData = (location) => {
         humidity,
         precip, //not sure if we are returning chance or what it is
         pressure,
+        precipprob,
       };
     } catch (error) {
       console.log("error");
@@ -42,6 +45,15 @@ export const apiData = (location) => {
       throw error;
     }
   };
+  const days = async () => {
+    try {
+      const data = await getData();
+      return data.days;
+    } catch (error) {
+      console.error("Error in resolving address:", error);
+      throw error;
+    }
+  };
 
-  return { getData, currentConditions, resolvedAddress };
+  return { getData, currentConditions, resolvedAddress, days };
 };

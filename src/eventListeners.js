@@ -18,11 +18,12 @@ export const eventListeners = () => {
 
         try {
           const search = userSearch();
-          const { weatherData, addressSeperated } =
+          const { weatherData, addressSeperated, weeklyForecastMinMax } =
             await search.getLocationData();
 
           console.log("Weather data:", weatherData);
           console.log("Address:", addressSeperated);
+          console.log("forecast:", weeklyForecastMinMax);
           //send data to dom here with a function that takes weatherdata, address etc as a parameter
           weatherUI.update(weatherData, addressSeperated, elements());
         } catch (error) {
