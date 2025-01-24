@@ -1,5 +1,6 @@
 import { apiData } from "./getData";
 import { userInput } from "./userInput";
+import { assignDay } from "./assignDay";
 
 export const userSearch = () => {
   const setLocation = () => {
@@ -29,7 +30,6 @@ export const userSearch = () => {
       const addressSeperated = address
         .split(",")
         .map((part) => part.replace(/\s/g, ""));
-
       return { weatherData, addressSeperated, weeklyForecastMinMax };
     } catch (error) {
       console.error("Error getting location data:", error);

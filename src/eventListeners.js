@@ -1,11 +1,11 @@
 import { userSearch } from "./userSearch";
 import { elements } from "./elements";
 import { weatherUI } from "./weatherUI";
+import { assignDay } from "./assignDay";
 
 export const eventListeners = () => {
   const setupEventListeners = () => {
     const inputElement = document.getElementById("cityInput");
-
     if (!inputElement) {
       console.error("Could not find cityInput element");
       return;
@@ -24,8 +24,15 @@ export const eventListeners = () => {
           console.log("Weather data:", weatherData);
           console.log("Address:", addressSeperated);
           console.log("forecast:", weeklyForecastMinMax);
-          //send data to dom here with a function that takes weatherdata, address etc as a parameter
-          weatherUI.update(weatherData, addressSeperated, elements());
+
+          const dayDetails = await assignDay();
+
+          weatherUI.update(
+            weatherData,
+            addressSeperated,
+            elements(),
+            dayDetails
+          );
         } catch (error) {
           console.error("Error processing weather request:", error);
         }
@@ -33,5 +40,9 @@ export const eventListeners = () => {
     });
   };
 
+  setupEventListeners();
+
   return { setupEventListeners };
 };
+
+eventListeners();

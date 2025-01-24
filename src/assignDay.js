@@ -1,10 +1,34 @@
-import { elements } from "./elements";
 import { userSearch } from "./userSearch";
 
 export const assignDay = async () => {
-  const data = await userSearch();
-  const { weeklyForecastMinMax } = await data.getLocationData();
-  const { dayName } = await weeklyForecastMinMax;
-  console.log(dayName);
-}; //No idea if this is working. Brain fried, can't think.
-// It's purpose should be to get the name of the days and the date. then order them from sunday to saturday. then send them to the UI.
+  try {
+    const data = await userSearch();
+    const { weeklyForecastMinMax } = await data.getLocationData();
+
+    // Sort days starting from Sunday
+    const dayDetails = weeklyForecastMinMax
+      .sort((a, b) => {
+        const days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        return days.indexOf(a.dayName) - days.indexOf(b.dayName);
+      })
+      .map((day) => ({
+        dayName: day.dayName,
+        tempMin: day.tempmin,
+        tempMax: day.tempmax,
+      }));
+
+    console.log("Day details:", dayDetails);
+    return dayDetails;
+  } catch (error) {
+    console.error("Error in assignDay:", error);
+    return null;
+  }
+};

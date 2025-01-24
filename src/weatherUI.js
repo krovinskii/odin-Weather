@@ -1,5 +1,5 @@
 export const weatherUI = {
-  update(weatherData, addressSeperated, elements) {
+  update(weatherData, addressSeperated, elements, dayDetails) {
     (elements.currentConditions.sky.textContent = weatherData.conditions),
       (elements.currentConditions.humidity.textContent = `${weatherData.humidity}%`),
       (elements.currentConditions.windSpeed.textContent = `${weatherData.windspeed} mph`),
@@ -16,6 +16,24 @@ export const weatherUI = {
           elements.cityInfo.cityState.textContent = addressSeperated[0];
           elements.cityInfo.country.textContent = addressSeperated[1];
         }
+      })(),
+      (function () {
+        const daysOrder = [
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+        ];
+        dayDetails.forEach((day, index) => {
+          const dayElement = elements.weeklyForecast[daysOrder[index]];
+          dayElement.innerHTML = `
+        <h4>${day.tempMin}°</h4>
+        ${day.tempMax}°
+      `;
+        });
       })();
   },
 };
