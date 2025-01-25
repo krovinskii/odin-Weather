@@ -30,7 +30,14 @@ export const userSearch = () => {
       const addressSeperated = address
         .split(",")
         .map((part) => part.replace(/\s/g, ""));
-      return { weatherData, addressSeperated, weeklyForecastMinMax };
+
+      const currentTemp = await weatherData.temp;
+      return {
+        weatherData,
+        addressSeperated,
+        weeklyForecastMinMax,
+        currentTemp,
+      };
     } catch (error) {
       console.error("Error getting location data:", error);
       throw error;

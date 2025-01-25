@@ -18,12 +18,17 @@ export const eventListeners = () => {
 
         try {
           const search = userSearch();
-          const { weatherData, addressSeperated, weeklyForecastMinMax } =
-            await search.getLocationData();
+          const {
+            weatherData,
+            addressSeperated,
+            weeklyForecastMinMax,
+            currentTemp,
+          } = await search.getLocationData();
 
           console.log("Weather data:", weatherData);
           console.log("Address:", addressSeperated);
           console.log("forecast:", weeklyForecastMinMax);
+          console.log("current temp:", currentTemp);
 
           const dayDetails = await assignDay();
 

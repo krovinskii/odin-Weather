@@ -1,6 +1,7 @@
 export const weatherUI = {
   update(weatherData, addressSeperated, elements, dayDetails) {
-    (elements.currentConditions.sky.textContent = weatherData.conditions),
+    (elements.currentConditions.currentTemp.textContent = `${weatherData.temp}°F`),
+      (elements.currentConditions.sky.textContent = weatherData.conditions),
       (elements.currentConditions.humidity.textContent = `${weatherData.humidity}%`),
       (elements.currentConditions.windSpeed.textContent = `${weatherData.windspeed} mph`),
       (elements.currentConditions.precipitation.textContent = `${weatherData.precipprob}%`),

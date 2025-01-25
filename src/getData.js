@@ -21,6 +21,7 @@ export const apiData = (location) => {
         pressure,
         precip,
         precipprob,
+        temp,
       } = currentConditions;
       return {
         conditions, //overcast / sunny, whatever
@@ -31,6 +32,7 @@ export const apiData = (location) => {
         precip, //not sure if we are returning chance or what it is
         pressure,
         precipprob,
+        temp,
       };
     } catch (error) {
       console.log("error");
