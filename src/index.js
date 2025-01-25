@@ -8,6 +8,15 @@ const listeners = eventListeners();
 listeners.setupEventListeners();
 assignDay();
 
-//Bug - if there is a space in the first item in the location array, it is removed. spaces and white space should not be removed from first item.
-//Implement chart.js for my chart to show hourly data day by day
-//actual temp not being retrieved
+//-----------------------------------------------------------------------
+//-----------------------------Bugs-------------------------------------
+//-----------------------------------------------------------------------
+//If there is a space in the first item in the location array, it is removed.
+// spaces and white space should not be removed from first item.
+
+//-----------------------------------------------------------------------
+//-----------------------------TO DO-------------------------------------
+//-----------------------------------------------------------------------
+//Change icon next to location depending on weather
+//change day and time to reflect current time and day in main card
+//send current data to chart
