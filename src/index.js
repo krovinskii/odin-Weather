@@ -2,6 +2,7 @@ import "./styles.css";
 import { eventListeners } from "./eventListeners";
 import { assignDay } from "./assignDay";
 import { hourlyGraph } from "./hourlyGraph";
+import { apiData } from "./getData";
 
 // Initialize event listeners
 const listeners = eventListeners();
@@ -20,3 +21,4 @@ assignDay();
 //Change icon next to location depending on weather
 //change day and time to reflect current time and day in main card
 //send current data to chart
+//Check if env is working.. ATM cannot check since api is maxed. Possibly hide in plain js in gitignore instead

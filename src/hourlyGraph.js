@@ -1,30 +1,35 @@
 import Chart from "chart.js/auto";
-import ChartDataLabels from "chartjs-plugin-datalabels";
 
-export const hourlyGraph = (async function () {
-  const data = [
-    { hour: "6am", temp: 10 },
-    { hour: "8am", temp: 10 },
-    { hour: "10am", temp: 30 },
-    { hour: "12pm", temp: 40 },
-    { hour: "2pm", temp: 23 },
-    { hour: "4pm", temp: 44 },
-    { hour: "6pm", temp: 34 },
-    { hour: "8pm", temp: 34 },
-    { hour: "10pm", temp: 45 },
-    { hour: "12pm", temp: 45 },
-    { hour: "2am", temp: 32 },
-    { hour: "4am", temp: 12 },
-  ]; //Need to import hourly data into temp from API
+let chartInstance = null;
 
-  new Chart(document.getElementById("hourlyGraph"), {
+export const hourlyGraph = (hourlyData) => {
+  // Filter hourly data to include only every two hours
+  const filteredData = hourlyData.filter((_, index) => index % 2 === 0);
+
+  const data = filteredData.map((hour) => {
+    const date = new Date(hour.datetimeEpoch * 1000); // Convert Unix timestamp to milliseconds
+    return {
+      hour: date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      temp: hour.temp,
+    };
+  });
+
+  console.log(data);
+  const ctx = document.getElementById("hourlyGraph").getContext("2d");
+
+  // Destroy the existing chart instance if it exists
+  if (chartInstance) {
+    chartInstance.destroy();
+  }
+
+  chartInstance = new Chart(ctx, {
     type: "line",
     options: {
       maintainAspectRatio: false,
       plugins: {
         legend: {
           labels: {
-            color: "rgb(240, 248, 255)", // Correct way to set label color in Chart.js
+            color: "rgb(240, 248, 255)",
             boxWidth: 0,
             font: {
               size: "25%",
@@ -75,4 +80,4 @@ export const hourlyGraph = (async function () {
       ],
     },
   });
-})();
+};

@@ -1,6 +1,5 @@
 import { apiData } from "./getData";
 import { userInput } from "./userInput";
-import { assignDay } from "./assignDay";
 
 export const userSearch = () => {
   const setLocation = () => {
@@ -17,7 +16,10 @@ export const userSearch = () => {
       const weatherData = await api.currentConditions();
 
       const forecast = await api.days();
-      const weeklyForecast = forecast.slice(0, 7);
+      const { hourlyJson } = await api.getData();
+      const weeklyForecast = Array.isArray(forecast)
+        ? forecast.slice(0, 7)
+        : [];
       const weeklyForecastMinMax = weeklyForecast.map((day) => ({
         tempmin: day.tempmin,
         tempmax: day.tempmax,
@@ -27,16 +29,15 @@ export const userSearch = () => {
         }),
       }));
       const address = await api.resolvedAddress();
-      const addressSeperated = address
-        .split(",")
-        .map((part) => part.replace(/\s/g, ""));
+      const addressSeperated = address.split(",").map((part) => part.trim());
 
-      const currentTemp = await weatherData.temp;
+      const currentTemp = weatherData.temp;
       return {
         weatherData,
         addressSeperated,
         weeklyForecastMinMax,
         currentTemp,
+        hourly: hourlyJson,
       };
     } catch (error) {
       console.error("Error getting location data:", error);

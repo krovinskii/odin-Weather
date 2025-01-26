@@ -23,5 +23,13 @@ export const elements = () => {
     friday: document.getElementById("friday"),
     saturday: document.getElementById("saturday"),
   };
-  return { currentConditions, cityInfo, weeklyForecast };
+  const convertBtn = document.getElementById("unitToggle");
+  const weatherIcon = document.getElementById("weatherTypeImg");
+  return {
+    currentConditions,
+    cityInfo,
+    weeklyForecast,
+    convertBtn,
+    weatherIcon,
+  };
 };

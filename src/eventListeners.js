@@ -23,6 +23,7 @@ export const eventListeners = () => {
             addressSeperated,
             weeklyForecastMinMax,
             currentTemp,
+            hourly,
           } = await search.getLocationData();
 
           console.log("Weather data:", weatherData);
@@ -36,7 +37,8 @@ export const eventListeners = () => {
             weatherData,
             addressSeperated,
             elements(),
-            dayDetails
+            dayDetails,
+            hourly
           );
         } catch (error) {
           console.error("Error processing weather request:", error);
