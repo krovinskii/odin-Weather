@@ -1,3 +1,5 @@
+//Retrieve data from visualcrossing weather API
+
 import { key } from "./key";
 
 export const apiData = (location) => {
@@ -15,7 +17,7 @@ export const apiData = (location) => {
       currentConditions: weatherDataJson.currentConditions,
       resolvedAddress: weatherDataJson.resolvedAddress,
       days: weatherDataJson.days,
-      hourlyJson: hourlyJson.days[0].hours, // Ensure hourly data is an array
+      hourlyJson: hourlyJson.days[0].hours,
     };
   };
 

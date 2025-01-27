@@ -1,3 +1,5 @@
+//Chart for hourly temperature data
+
 import Chart from "chart.js/auto";
 
 let chartInstance = null;

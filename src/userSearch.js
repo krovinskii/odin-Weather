@@ -1,3 +1,4 @@
+// Purpose: This file is responsible for getting the user's input and fetching the weather data for the location the user has entered.
 import { apiData } from "./getData";
 import { userInput } from "./userInput";
 

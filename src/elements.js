@@ -1,3 +1,5 @@
+//All elements here
+
 export const elements = () => {
   const currentConditions = {
     currentTemp: document.getElementById("currentTemp"),

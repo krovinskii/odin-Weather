@@ -1,11 +1,16 @@
+//Event listeners, actions
+
 import { userSearch } from "./userSearch";
 import { elements } from "./elements";
 import { weatherUI } from "./weatherUI";
 import { assignDay } from "./assignDay";
+import { getIsCelsius, setIsCelsius } from "./sharedState";
 
 export const eventListeners = () => {
   const setupEventListeners = () => {
     const inputElement = document.getElementById("cityInput");
+    const convertBtn = document.getElementById("unitToggle");
+
     if (!inputElement) {
       console.error("Could not find cityInput element");
       return;
@@ -45,6 +50,23 @@ export const eventListeners = () => {
         }
       }
     });
+
+    if (convertBtn) {
+      convertBtn.addEventListener("click", async () => {
+        setIsCelsius(!getIsCelsius());
+        const search = userSearch();
+        const { weatherData, addressSeperated, weeklyForecastMinMax, hourly } =
+          await search.getLocationData();
+        const dayDetails = await assignDay();
+        weatherUI.update(
+          weatherData,
+          addressSeperated,
+          elements(),
+          dayDetails,
+          hourly
+        );
+      });
+    }
   };
 
   setupEventListeners();
